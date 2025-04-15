@@ -3,11 +3,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Manufacturer(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.name} ({self.country})"
+        return self.name
 
 
 class Car(models.Model):
@@ -17,11 +17,11 @@ class Car(models.Model):
     drivers = models.ManyToManyField("Driver", related_name='cars')
 
     def __str__(self):
-        return f"{self.manufacturer} ({self.model})"
+        return self.model
 
 
 class Driver(AbstractUser):
     license_number = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return f"{self.username} ({self.license_number})"
+        return self.username
