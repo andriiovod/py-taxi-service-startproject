@@ -27,6 +27,3 @@ class DriverAdmin(UserAdmin):
     list_display = ("username", "first_name", "last_name",
                     "license_number", "is_staff")
     search_fields = ("username", "license_number")
-
-
-# admin.site.register(Manufacturer, ManufacturerAdmin)
